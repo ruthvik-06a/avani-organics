@@ -39,14 +39,9 @@ export default function LoginPage() {
         })
 
         const data = await res.json()
-<<<<<<< HEAD
 
         if (!res.ok) {
           setError(data.error || "Login failed")
-=======
-        if (!res.ok) {
-          setError(data.error)
->>>>>>> 09d70a3 (final working version)
           return
         }
 
@@ -66,14 +61,9 @@ export default function LoginPage() {
         })
 
         const data = await res.json()
-<<<<<<< HEAD
 
         if (!res.ok) {
           setError(data.error || "Signup failed")
-=======
-        if (!res.ok) {
-          setError(data.error)
->>>>>>> 09d70a3 (final working version)
           return
         }
 
@@ -81,16 +71,11 @@ export default function LoginPage() {
         toast.success("Account created! Welcome to Avani Organics.")
         router.push("/")
       }
-<<<<<<< HEAD
     } catch (error) {
       console.error("Auth form error:", error)
       setError(
         error instanceof Error ? error.message : "Something went wrong. Please try again."
       )
-=======
-    } catch {
-      setError("Something went wrong. Please try again.")
->>>>>>> 09d70a3 (final working version)
     } finally {
       setLoading(false)
     }
@@ -99,10 +84,7 @@ export default function LoginPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4 py-20">
       <div className="w-full max-w-md">
-<<<<<<< HEAD
-=======
         {/* Logo */}
->>>>>>> 09d70a3 (final working version)
         <div className="mb-8 flex flex-col items-center gap-3">
           <div className="flex size-14 items-center justify-center rounded-full bg-primary">
             <Leaf className="size-7 text-primary-foreground" />
@@ -112,13 +94,9 @@ export default function LoginPage() {
           </h1>
         </div>
 
-<<<<<<< HEAD
-        <div className="rounded-2xl border border-border bg-card p-8 shadow-sm">
-=======
         {/* Card */}
         <div className="rounded-2xl border border-border bg-card p-8 shadow-sm">
           {/* Tabs */}
->>>>>>> 09d70a3 (final working version)
           <div className="mb-8 flex rounded-full border border-border bg-secondary p-1">
             {(["login", "register"] as Tab[]).map((tab) => (
               <button
