@@ -17,12 +17,10 @@ export async function POST(request: NextRequest) {
     const db = await getDb()
     const users = db.collection("users")
 
-<<<<<<< HEAD
-    const user = await users.findOne({ email: String(email).toLowerCase().trim() })
+    // Safer email normalization (handles undefined/null too)
+    const normalizedEmail = String(email).toLowerCase().trim()
+    const user = await users.findOne({ email: normalizedEmail })
 
-=======
-    const user = await users.findOne({ email: email.toLowerCase() })
->>>>>>> 09d70a3 (final working version)
     if (!user) {
       return NextResponse.json(
         { error: "Invalid email or password" },
@@ -30,7 +28,6 @@ export async function POST(request: NextRequest) {
       )
     }
 
-<<<<<<< HEAD
     if (!user.password) {
       return NextResponse.json(
         { error: "This account does not have a password set." },
@@ -39,10 +36,6 @@ export async function POST(request: NextRequest) {
     }
 
     const passwordMatch = await bcrypt.compare(String(password), user.password)
-
-=======
-    const passwordMatch = await bcrypt.compare(password, user.password)
->>>>>>> 09d70a3 (final working version)
     if (!passwordMatch) {
       return NextResponse.json(
         { error: "Invalid email or password" },
@@ -57,7 +50,6 @@ export async function POST(request: NextRequest) {
     })
 
     return NextResponse.json(
-<<<<<<< HEAD
       {
         message: "Logged in successfully",
         user: {
@@ -65,26 +57,16 @@ export async function POST(request: NextRequest) {
           email: user.email,
         },
       },
-=======
-      { message: "Logged in successfully", user: { name: user.name, email: user.email } },
->>>>>>> 09d70a3 (final working version)
       { status: 200 }
     )
   } catch (error) {
     console.error("Login error:", error)
-<<<<<<< HEAD
-
-    const message =
-      error instanceof Error ? error.message : "Unknown login error"
-
-    return NextResponse.json(
-      {
-        error: message,
-      },
-=======
+    
+    // Detailed error logging for debugging, generic error for users
+    const message = error instanceof Error ? error.message : "Unknown login error"
+    
     return NextResponse.json(
       { error: "Something went wrong. Please try again." },
->>>>>>> 09d70a3 (final working version)
       { status: 500 }
     )
   }

@@ -17,7 +17,10 @@ const playfair = Playfair_Display({
 })
 
 export const metadata: Metadata = {
-  title: "Avani Organics | Pure Organic Products from Karnataka",
+  title: {
+    template: "%s | Avani Organics",
+    default: "Avani Organics | Pure Organic Products from Karnataka",
+  },
   description:
     "Discover premium organic millets, cold-pressed oils, spices, and natural products sourced directly from Karnataka farms. 100% natural, chemical-free, and sustainably grown.",
   keywords: [
@@ -43,9 +46,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${dmSans.variable} ${playfair.variable}`}>
-      <body className="font-sans antialiased">
+      <body className="font-sans antialiased min-h-screen bg-background text-foreground">
         <Navbar />
-        <main>{children}</main>
+        <main className="flex-1">{children}</main>
         <Footer />
         <Toaster position="bottom-right" richColors />
         <Analytics />
