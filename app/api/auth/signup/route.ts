@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server"
 import bcrypt from "bcryptjs"
-import { getDb } from "@/lib/mongodb"
-import { createSession } from "@/lib/auth"
+import { getDb } from "@/lib/db"
 
 export async function POST(request: NextRequest) {
   try {
@@ -9,7 +8,7 @@ export async function POST(request: NextRequest) {
 
     if (!name || !email || !password) {
       return NextResponse.json(
-        { error: "Name, email, and password are required" },
+        { error: "Name, email and password are required" },
         { status: 400 }
       )
     }
@@ -18,48 +17,41 @@ export async function POST(request: NextRequest) {
     const users = db.collection("users")
 
     const normalizedEmail = String(email).toLowerCase().trim()
+
+    // ✅ check existing user
     const existingUser = await users.findOne({ email: normalizedEmail })
 
     if (existingUser) {
       return NextResponse.json(
-        { error: "An account with this email already exists" },
-        { status: 409 }
+        { error: "User already exists" },
+        { status: 400 }
       )
     }
 
-    const hashedPassword = await bcrypt.hash(String(password), 12)
+    // ✅ hash password
+    const hashedPassword = await bcrypt.hash(String(password), 10)
 
+    // ✅ insert user
     const result = await users.insertOne({
-      name: String(name).trim(),
+      name,
       email: normalizedEmail,
-      phone: phone ? String(phone).trim() : null,
+      phone: phone || "",
       password: hashedPassword,
       createdAt: new Date(),
     })
 
-    await createSession({
-      userId: result.insertedId.toString(),
-      name: String(name).trim(),
-      email: normalizedEmail,
-    })
-
     return NextResponse.json(
       {
-        message: "Account created successfully",
-        user: {
-          name: String(name).trim(),
-          email: normalizedEmail,
-        },
+        message: "User created successfully",
+        userId: result.insertedId,
       },
       { status: 201 }
     )
   } catch (error) {
-    console.error("Signup error:", error)
-    
-    const message = error instanceof Error ? error.message : "Unknown signup error"
+    console.error("SIGNUP ERROR 👉", error)
 
     return NextResponse.json(
-      { error: "Something went wrong. Please try again." },
+      { error: "Internal Server Error" },
       { status: 500 }
     )
   }
