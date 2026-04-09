@@ -1,11 +1,13 @@
 import { NextRequest, NextResponse } from "next/server"
 import bcrypt from "bcryptjs"
-import { getDb } from "@/lib/mongodb"
-import { createSession } from "@/lib/auth"
+import { getDb } from "@/lib/db"
 
 export async function POST(request: NextRequest) {
   try {
+    console.log("STEP 1: API HIT")
+
     const { email, password } = await request.json()
+    console.log("STEP 2:", email)
 
     if (!email || !password) {
       return NextResponse.json(
@@ -15,11 +17,13 @@ export async function POST(request: NextRequest) {
     }
 
     const db = await getDb()
+    console.log("STEP 3: DB CONNECTED")
+
     const users = db.collection("users")
 
-    // Safer email normalization (handles undefined/null too)
     const normalizedEmail = String(email).toLowerCase().trim()
     const user = await users.findOne({ email: normalizedEmail })
+    console.log("STEP 4: USER FOUND", !!user)
 
     if (!user) {
       return NextResponse.json(
@@ -28,14 +32,11 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    if (!user.password) {
-      return NextResponse.json(
-        { error: "This account does not have a password set." },
-        { status: 400 }
-      )
-    }
+    console.log("STEP 5: CHECKING PASSWORD")
 
     const passwordMatch = await bcrypt.compare(String(password), user.password)
+    console.log("STEP 6: PASSWORD MATCH", passwordMatch)
+
     if (!passwordMatch) {
       return NextResponse.json(
         { error: "Invalid email or password" },
@@ -43,30 +44,23 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    await createSession({
-      userId: user._id.toString(),
-      name: user.name,
-      email: user.email,
-    })
+    // 🔴 Session management will go here later
+    // await createSession(user.id, request)
 
-    return NextResponse.json(
-      {
-        message: "Logged in successfully",
-        user: {
-          name: user.name,
-          email: user.email,
-        },
-      },
-      { status: 200 }
-    )
+    console.log("STEP 7: LOGIN SUCCESS")
+
+    // Return user data without password
+    const { password: _, ...userWithoutPassword } = user
+
+    return NextResponse.json({ 
+      success: true,
+      message: "Login successful",
+      user: userWithoutPassword 
+    })
   } catch (error) {
-    console.error("Login error:", error)
-    
-    // Detailed error logging for debugging, generic error for users
-    const message = error instanceof Error ? error.message : "Unknown login error"
-    
+    console.error("LOGIN ERROR 👉", error)
     return NextResponse.json(
-      { error: "Something went wrong. Please try again." },
+      { error: "Internal server error" },
       { status: 500 }
     )
   }

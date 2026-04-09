@@ -281,3 +281,21 @@ export default function LoginPage() {
     </div>
   )
 }
+
+// 👇 ADD THIS - Save as app/api/auth/login/route.ts
+export async function POST(req: Request) {
+  try {
+    const body = await req.json()
+    const { email, password } = body
+
+    // your login logic here
+
+    return Response.json({ message: "Login successful" })
+  } catch (error) {
+    console.error("LOGIN API ERROR:", error) // 👈 ADD THIS
+    return Response.json(
+      { error: "Internal Server Error" },
+      { status: 500 }
+    )
+  }
+}

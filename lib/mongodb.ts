@@ -8,15 +8,15 @@ export async function getDb(): Promise<Db> {
     return cachedDb
   }
 
-  const uri = process.env.MONGODB_URI
+  const uri = process.env.MONGO_URI // ✅ FIXED
   if (!uri) {
-    throw new Error("Please define the MONGODB_URI environment variable")
+    throw new Error("Please define the MONGO_URI environment variable")
   }
 
   const client = new MongoClient(uri)
   await client.connect()
 
-  const db = client.db()
+  const db = client.db("avani_organics") // ✅ FIXED
   cachedClient = client
   cachedDb = db
 
