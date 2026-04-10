@@ -127,7 +127,7 @@ export default function ContactPage() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Avani Organics Location"
+                title="Arogya siri Location"
               />
             </div>
           </div>

@@ -15,7 +15,7 @@ export async function generateMetadata({
   const product = getProductById(id)
   if (!product) return { title: "Product Not Found" }
   return {
-    title: `${product.name} | Avani Organics`,
+    title: `${product.name} | Arogya siri`,
     description: product.description,
   }
 }

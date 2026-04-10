@@ -18,8 +18,8 @@ const playfair = Playfair_Display({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | Avani Organics",
-    default: "Avani Organics | Pure Organic Products from Karnataka",
+    template: "%s | Arogya siri",
+    default: "Arogya siri | Pure Organic Products from Karnataka",
   },
   description:
     "Discover premium organic millets, cold-pressed oils, spices, and natural products sourced directly from Karnataka farms. 100% natural, chemical-free, and sustainably grown.",

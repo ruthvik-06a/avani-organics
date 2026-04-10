@@ -12,7 +12,7 @@ interface CartState {
   items: CartItem[]
 }
 
-const STORAGE_KEY = "avani-cart"
+const STORAGE_KEY = "arogya-siri-cart"
 
 function getInitialState(): CartState {
   if (typeof window === "undefined") {

@@ -1,7 +1,7 @@
 import { SignJWT, jwtVerify } from "jose"
 import { cookies } from "next/headers"
 
-const SESSION_COOKIE = "avani-session"
+const SESSION_COOKIE = "arogya-siri-session"
 
 function getKey() {
   const secret = process.env.AUTH_SECRET

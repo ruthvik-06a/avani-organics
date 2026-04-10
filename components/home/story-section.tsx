@@ -31,7 +31,7 @@ export function StorySection() {
               </span>
             </h2>
             <p className="leading-relaxed text-muted-foreground">
-              Avani Organics was born from a deep love for Karnataka{"'"}s rich
+                Arogya siri was born from a deep love for Karnataka{"'"}s rich
               agricultural heritage. We work directly with local farmers who
               follow traditional, chemical-free farming practices to bring you
               the purest organic products.

@@ -10,9 +10,9 @@ import {
 } from "lucide-react"
 
 export const metadata = {
-  title: "About Us | Avani Organics",
+  title: "About Us | Arogya siri",
   description:
-    "Learn about Avani Organics and our mission to bring pure, organic products from Karnataka farms to your table.",
+    "Learn about Arogya siri and our mission to bring pure, organic products from Karnataka farms to your table.",
 }
 
 const values = [
@@ -63,7 +63,7 @@ const milestones = [
   },
   {
     year: "2024",
-    title: "The Avani Family",
+    title: "The Arogya siri Family",
     description:
       "100+ farmer partners, 50+ products, and 2,000+ happy customers across Karnataka.",
   },
@@ -92,7 +92,7 @@ export default function AboutPage() {
             </span>
           </h1>
           <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed opacity-90">
-            Avani Organics is a Karnataka-born initiative dedicated to
+            Arogya siri is a Karnataka-born initiative dedicated to
             reviving traditional organic farming and making pure, natural
             products accessible to every home.
           </p>
@@ -119,9 +119,9 @@ export default function AboutPage() {
                 </span>
               </h2>
               <p className="leading-relaxed text-muted-foreground">
-                The name {"\""}Avani{"\"" } means Earth in Sanskrit. It reflects our
+                The name <span className="font-medium">"Arogya siri"</span> means Earth in Sanskrit. It reflects our
                 deep connection with the land and our commitment to preserving
-                its purity. We started Avani Organics with a simple belief:
+                its purity. We started Arogya siri with a simple belief:
                 the food on your table should be as pure as nature intended.
               </p>
               <p className="leading-relaxed text-muted-foreground">
@@ -132,7 +132,7 @@ export default function AboutPage() {
                 chemical-heavy practices has threatened this legacy.
               </p>
               <p className="leading-relaxed text-muted-foreground">
-                Avani Organics was founded to bridge the gap between
+                Arogya siri was founded to bridge the gap between
                 traditional wisdom and modern consumers. We work with small
                 farming communities across Karnataka who still practice
                 natural, organic farming. By creating a direct market for
