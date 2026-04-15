@@ -127,7 +127,7 @@ export default function ContactPage() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                title="Arogya siri Location"
+                title="Aarogya siri Location"
               />
             </div>
           </div>

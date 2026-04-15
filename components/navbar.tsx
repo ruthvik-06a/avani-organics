@@ -61,7 +61,7 @@ export function Navbar() {
             <Leaf className="size-5 text-primary-foreground" />
           </div>
           <span className="font-serif text-xl font-bold tracking-tight text-foreground">
-            Arogya siri
+            Aarogya siri
           </span>
         </Link>
 

@@ -13,7 +13,7 @@ export function Footer() {
                 <Leaf className="size-5 text-primary-foreground" />
               </div>
               <span className="font-serif text-xl font-bold">
-                Arogya siri
+                Aarogya siri
               </span>
             </div>
             <p className="text-sm leading-relaxed opacity-70">
@@ -84,7 +84,7 @@ export function Footer() {
 
         <div className="mt-12 border-t border-primary-foreground/10 pt-8 text-center text-sm opacity-50">
           <p>
-            {"2026  Arogya siri. All rights reserved. Delivering across Karnataka."}
+            {"2026  Aarogya siri. All rights reserved. Delivering across Karnataka."}
           </p>
         </div>
       </div>

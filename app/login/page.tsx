@@ -68,7 +68,7 @@ export default function LoginPage() {
         }
 
         await mutate()
-        toast.success("Account created! Welcome to Arogya siri.")
+        toast.success("Account created! Welcome to Aarogya siri.")
         router.push("/")
       }
     } catch (error) {
@@ -90,7 +90,7 @@ export default function LoginPage() {
             <Leaf className="size-7 text-primary-foreground" />
           </div>
           <h1 className="font-serif text-2xl font-bold text-foreground">
-            Arogya siri
+            Aarogya siri
           </h1>
         </div>
 

@@ -95,7 +95,7 @@ export default function SellerAccessPage() {
             Application Received!
           </h1>
           <p className="mt-4 text-lg text-muted-foreground">
-            Thank you for your interest in partnering with Arogya siri. Our team will review your application and contact you within 3-5 business days.
+            Thank you for your interest in partnering with Aarogya siri. Our team will review your application and contact you within 3-5 business days.
           </p>
           <div className="mt-8 flex flex-col gap-3 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">

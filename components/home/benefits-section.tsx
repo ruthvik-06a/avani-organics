@@ -36,7 +36,7 @@ export function BenefitsSection() {
             Why Choose Us
           </p>
           <h2 className="font-serif text-4xl font-bold text-foreground md:text-5xl">
-            <span className="text-balance">The Arogya siri Promise</span>
+            <span className="text-balance">The Aarogya siri Promise</span>
           </h2>
         </div>
 

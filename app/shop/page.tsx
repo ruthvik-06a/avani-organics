@@ -2,7 +2,7 @@ import { Suspense } from "react"
 import { ShopContent } from "@/components/shop/shop-content"
 
 export const metadata = {
-  title: "Shop | Arogya siri",
+  title: "Shop | Aarogya siri",
   description:
     "Browse our full collection of organic millets, cold-pressed oils, spices, and natural products from Karnataka.",
 }
