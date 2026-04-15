@@ -25,7 +25,7 @@ export function ProductCard({ product }: { product: Product }) {
 
   return (
     <Link href={`/shop/${product.id}`} className="group block w-full">
-      <div className="relative w-full overflow-hidden rounded-[28px] border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:rounded-xl">
+      <div className="relative w-full overflow-hidden rounded-[32px] border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg sm:rounded-xl">
         {/* Image */}
         <div className="relative h-72 overflow-hidden bg-red-500 sm:aspect-square sm:h-auto">
           <Image
