@@ -24,69 +24,72 @@ export function ProductCard({ product }: { product: Product }) {
   }
 
   return (
-    <Link href={`/shop/${product.id}`} className="group block">
-        <div className="relative overflow-hidden rounded-xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
-          {/* Image */}
-          <div className="relative aspect-square overflow-hidden bg-secondary">
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-110"
-            />
-            {discount > 0 && (
-              <Badge className="absolute top-3 left-3 bg-accent text-accent-foreground">
-                {`${discount}% OFF`}
-              </Badge>
-            )}
+    <Link href={`/shop/${product.id}`} className="group block w-full">
+      <div className="relative w-full overflow-hidden rounded-[28px] border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:shadow-xl sm:rounded-xl">
+        {/* Image */}
+        <div className="relative h-72 overflow-hidden bg-secondary sm:aspect-square sm:h-auto">
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            className="object-cover transition-transform duration-500 group-hover:scale-110"
+          />
+          {discount > 0 && (
+            <Badge className="absolute top-4 left-4 rounded-full bg-accent px-3 py-1 text-sm text-accent-foreground sm:top-3 sm:left-3 sm:text-xs">
+              {`${discount}% OFF`}
+            </Badge>
+          )}
+        </div>
+
+        {/* Info */}
+        <div className="flex flex-col gap-3 p-4 sm:gap-2 sm:p-4">
+          <p className="text-xs font-medium uppercase tracking-[0.2em] text-muted-foreground sm:tracking-wider">
+            {product.category}
+          </p>
+
+          <h3 className="font-serif text-2xl font-semibold leading-tight text-card-foreground transition-colors group-hover:text-primary sm:text-lg">
+            {product.name}
+          </h3>
+
+          <p className="line-clamp-2 text-base leading-7 text-muted-foreground sm:text-sm sm:leading-relaxed">
+            {product.description}
+          </p>
+
+          {/* Rating */}
+          <div className="flex items-center gap-1.5">
+            <Star className="size-4 fill-amber-400 text-amber-400 sm:size-3.5" />
+            <span className="text-sm font-medium text-card-foreground sm:text-xs">
+              {product.rating}
+            </span>
+            <span className="text-sm text-muted-foreground sm:text-xs">
+              ({product.reviews})
+            </span>
           </div>
 
-          {/* Info */}
-          <div className="flex flex-col gap-2 p-4">
-            <p className="text-xs font-medium uppercase tracking-wider text-muted-foreground">
-              {product.category}
-            </p>
-            <h3 className="font-serif text-lg font-semibold leading-tight text-card-foreground transition-colors group-hover:text-primary">
-              {product.name}
-            </h3>
-            <p className="line-clamp-2 text-sm leading-relaxed text-muted-foreground">
-              {product.description}
-            </p>
-
-            {/* Rating */}
-            <div className="flex items-center gap-1">
-              <Star className="size-3.5 fill-amber-400 text-amber-400" />
-              <span className="text-xs font-medium text-card-foreground">
-                {product.rating}
+          {/* Price + Order */}
+          <div className="mt-2 flex items-end justify-between">
+            <div className="flex items-baseline gap-2">
+              <span className="text-3xl font-bold text-card-foreground sm:text-lg">
+                {`\u20B9${product.price}`}
               </span>
-              <span className="text-xs text-muted-foreground">
-                ({product.reviews})
-              </span>
-            </div>
-
-            {/* Price + Order */}
-            <div className="mt-1 flex items-center justify-between">
-              <div className="flex items-baseline gap-2">
-                <span className="text-lg font-bold text-card-foreground">
-                  {`\u20B9${product.price}`}
+              {product.originalPrice && (
+                <span className="text-lg text-muted-foreground line-through sm:text-sm">
+                  {`\u20B9${product.originalPrice}`}
                 </span>
-                {product.originalPrice && (
-                  <span className="text-sm text-muted-foreground line-through">
-                    {`\u20B9${product.originalPrice}`}
-                  </span>
-                )}
-              </div>
-              <Button
-                size="icon"
-                onClick={handleAddToCart}
-                className="size-9 rounded-full"
-              >
-                <ShoppingCart className="size-4" />
-                <span className="sr-only">Add to cart</span>
-              </Button>
+              )}
             </div>
+
+            <Button
+              size="icon"
+              onClick={handleAddToCart}
+              className="size-12 rounded-full sm:size-9"
+            >
+              <ShoppingCart className="size-5 sm:size-4" />
+              <span className="sr-only">Add to cart</span>
+            </Button>
           </div>
         </div>
-      </Link>
+      </div>
+    </Link>
   )
 }
