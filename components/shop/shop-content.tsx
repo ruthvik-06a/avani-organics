@@ -71,9 +71,21 @@ export function ShopContent() {
 
         {/* Products Grid */}
         {filteredProducts.length > 0 ? (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <div className="grid grid-cols-2 gap-3 p-2">
             {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
+              <div key={product.id} className="bg-white rounded-xl shadow p-2">
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className="w-full h-28 object-cover rounded-lg"
+                />
+                <h2 className="text-xs font-semibold mt-1 line-clamp-2">
+                  {product.name}
+                </h2>
+                <p className="text-green-600 font-bold text-sm">
+                  ₹{product.price}
+                </p>
+              </div>
             ))}
           </div>
         ) : (
